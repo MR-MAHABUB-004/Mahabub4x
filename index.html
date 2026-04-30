@@ -1,485 +1,808 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="https://telegra.ph/file/5f9f29b29b271ba408000.jpg" type="image/x-icon">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<title>Mahabub Rahman</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--=============== FAVICON ===============-->
+  <link rel="shortcut icon" href="https://telegra.ph/file/5f9f29b29b271ba408000.jpg" type="image/x-icon">
+
+  <!--=============== REMIX ICONS ===============-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!--=============== CSS ===============-->
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#3b82f6;
-  --blue-dark:#1d4ed8;
-  --blue-light:#eff6ff;
-  --indigo:#6366f1;
-  --white:#ffffff;
-  --gray-50:#f8fafc;
-  --gray-100:#f1f5f9;
-  --gray-200:#e2e8f0;
-  --gray-400:#94a3b8;
-  --gray-500:#64748b;
-  --gray-700:#334155;
-  --gray-900:#0f172a;
-  --font:'Poppins',sans-serif;
-  --radius-sm:8px;
-  --radius:14px;
-  --radius-lg:20px;
-  --radius-xl:28px;
-}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--gray-50);color:var(--gray-700);min-height:100vh;transition:background .3s,color .3s}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-img{max-width:100%;display:block}
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-/* ── DARK ── */
-body.dark{
-  --white:#1e293b;
-  --gray-50:#0f172a;
-  --gray-100:#1e293b;
-  --gray-200:#334155;
-  --gray-400:#64748b;
-  --gray-500:#94a3b8;
-  --gray-700:#cbd5e1;
-  --gray-900:#f1f5f9;
-  --blue-light:rgba(59,130,246,.12);
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+      Blue: hsl(207, 90%, 61%)
+      Purple: hsl(250, 66%, 75%)
+      Pink: hsl(356, 66%, 75%)
+      Teal: hsl(174, 63%, 62%)
+  */
+
+  --hue: 207;
+  --sat: 90%;
+  --lig: 61%;
+  --first-color: hsl(var(--hue), var(--sat), var(--lig));
+  --first-color-alt: hsl(var(--hue), var(--sat), 57%);
+  /* -4% */
+  --title-color: hsl(var(--hue), 12%, 15%);
+  --text-color: hsl(var(--hue), 12%, 45%);
+  --text-color-light: hsl(var(--hue), 8%, 75%);
+  --text-color-lighten: hsl(var(--hue), 8%, 92%);
+  --body-color: hsl(var(--hue), 100%, 99%);
+  --container-color: #fff;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Poppins', sans-serif;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
 }
 
-/* ── THEME BTN ── */
-.theme-btn{
-  position:fixed;top:1.2rem;right:1.2rem;z-index:200;
-  width:42px;height:42px;border-radius:50%;
-  background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
-  border:1.5px solid var(--gray-200);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;color:var(--gray-700);cursor:pointer;
-  box-shadow:0 2px 12px rgba(0,0,0,.08);transition:.3s;
-}
-.theme-btn:hover{border-color:var(--blue);color:var(--blue)}
-body.dark .theme-btn{background:rgba(30,41,59,.85)}
-
-/* ── HERO ── */
-.hero{
-  position:relative;height:260px;overflow:hidden;
-  background:linear-gradient(135deg,#1d4ed8 0%,#3b82f6 35%,#6366f1 70%,#8b5cf6 100%);
-}
-.hero-anim{position:absolute;inset:0;overflow:hidden}
-.blob{
-  position:absolute;border-radius:50%;filter:blur(60px);opacity:.45;
-  animation:drift 8s ease-in-out infinite alternate;
-}
-.blob-1{width:360px;height:360px;background:#93c5fd;top:-100px;left:-60px;animation-delay:0s}
-.blob-2{width:280px;height:280px;background:#a5b4fc;top:20px;right:-40px;animation-delay:-3s}
-.blob-3{width:200px;height:200px;background:#c4b5fd;bottom:-80px;left:40%;animation-delay:-5s}
-@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(30px,20px) scale(1.1)}}
-
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
-  background-size:36px 36px;
+@media screen and (min-width: 968px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
 }
 
-/* ── MAIN WRAPPER ── */
-.page{max-width:700px;margin:0 auto;padding:0 1.25rem 4rem;position:relative;z-index:1}
-
-/* ── PROFILE CARD ── */
-.profile-card{
-  background:var(--white);
-  border-radius:var(--radius-xl);
-  padding:0 1.75rem 2rem;
-  box-shadow:0 8px 40px rgba(59,130,246,.12),0 2px 8px rgba(0,0,0,.06);
-  margin-top:-72px;
-  text-align:center;
-  border:1px solid var(--gray-200);
-}
-body.dark .profile-card{border-color:var(--gray-200);box-shadow:0 8px 40px rgba(0,0,0,.4)}
-
-/* ── AVATAR ── */
-.avatar-wrap{
-  display:inline-block;
-  margin-top:-52px;margin-bottom:1.1rem;
-  position:relative;
-}
-.avatar-ring{
-  width:116px;height:116px;padding:3.5px;border-radius:50%;
-  background:linear-gradient(145deg,#3b82f6,#6366f1,#8b5cf6);
-  box-shadow:0 8px 28px rgba(99,102,241,.4);
-}
-.avatar-inner{
-  width:100%;height:100%;border-radius:50%;overflow:hidden;
-  border:3.5px solid var(--white);background:var(--gray-100);
-}
-.avatar-inner img{width:100%;height:100%;object-fit:cover}
-.avatar-status{
-  position:absolute;bottom:8px;right:8px;
-  width:18px;height:18px;border-radius:50%;
-  background:#22c55e;border:3px solid var(--white);
-  box-shadow:0 0 0 2px rgba(34,197,94,.3);
-  animation:statusPulse 2.5s ease-in-out infinite;
-}
-@keyframes statusPulse{0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.3)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-
-/* ── NAME ── */
-.profile-name{
-  font-size:1.55rem;font-weight:800;color:var(--gray-900);
-  letter-spacing:-.025em;margin-bottom:.35rem;line-height:1.15;
-}
-.profile-role{
-  display:inline-flex;align-items:center;gap:.45rem;
-  font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--blue);background:var(--blue-light);
-  padding:.3rem 1rem;border-radius:2rem;margin-bottom:1.6rem;
-  border:1px solid rgba(59,130,246,.2);
-}
-.profile-role i{font-size:.9rem}
-
-/* ── STAT ROW ── */
-.stats-row{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border:1.5px solid var(--gray-200);border-radius:var(--radius);
-  overflow:hidden;margin-bottom:1.6rem;
-}
-.stat-cell{
-  padding:.9rem .5rem;text-align:center;
-  border-right:1.5px solid var(--gray-200);
-  transition:background .2s;cursor:default;
-}
-.stat-cell:last-child{border-right:none}
-.stat-cell:hover{background:var(--blue-light)}
-.stat-num{
-  font-size:1.2rem;font-weight:800;color:var(--gray-900);
-  display:block;line-height:1.2;margin-bottom:.18rem;
-}
-.stat-desc{font-size:.66rem;font-weight:500;color:var(--gray-400);line-height:1.3}
-
-/* ── SOCIALS ── */
-.socials{display:flex;justify-content:center;gap:.55rem;margin-bottom:1.6rem}
-.soc-btn{
-  width:42px;height:42px;border-radius:50%;
-  background:var(--gray-100);border:1.5px solid var(--gray-200);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.05rem;color:var(--gray-500);
-  transition:.25s;
-}
-.soc-btn:hover{
-  background:var(--blue);border-color:var(--blue);color:#fff;
-  transform:translateY(-3px);box-shadow:0 8px 20px rgba(59,130,246,.35);
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-/* ── ACTION BTNS ── */
-.actions{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.72rem 1.45rem;border-radius:.75rem;
-  font-family:var(--font);font-size:.85rem;font-weight:600;
-  cursor:pointer;border:none;transition:.25s;
-}
-.btn-fill{
-  background:linear-gradient(135deg,#3b82f6,#6366f1);
-  color:#fff;box-shadow:0 6px 20px rgba(99,102,241,.38);
-}
-.btn-fill:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(99,102,241,.5)}
-.btn-outline{
-  background:var(--white);color:var(--gray-700);
-  border:1.5px solid var(--gray-200);
-}
-.btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
-
-/* ── TABS ── */
-.tab-wrap{margin-top:2rem}
-.tab-bar{
-  display:flex;background:var(--white);
-  border:1.5px solid var(--gray-200);
-  border-radius:var(--radius);padding:.3rem;gap:.3rem;
-  box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:1.75rem;
-}
-.tab{
-  flex:1;padding:.72rem .5rem;border:none;background:transparent;
-  font-family:var(--font);font-size:.875rem;font-weight:500;
-  color:var(--gray-400);border-radius:.625rem;cursor:pointer;transition:.25s;
-  display:flex;align-items:center;justify-content:center;gap:.4rem;
-}
-.tab i{font-size:1rem}
-.tab:hover{color:var(--gray-700);background:var(--gray-100)}
-.tab.active{
-  background:linear-gradient(135deg,#3b82f6,#6366f1);
-  color:#fff;font-weight:600;
-  box-shadow:0 4px 14px rgba(99,102,241,.35);
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: .3s;
+  /* For animation dark mode */
 }
 
-/* ── PANELS ── */
-.panel{display:none}.panel.active{display:block}
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: 600;
+}
 
-/* ── PROJECT CARDS ── */
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-.proj-card{
-  background:var(--white);border-radius:var(--radius-lg);
-  overflow:hidden;border:1.5px solid var(--gray-200);
-  box-shadow:0 2px 12px rgba(0,0,0,.05);
-  transition:transform .3s,box-shadow .3s;
+ul {
+  list-style: none;
 }
-.proj-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(59,130,246,.15)}
-.proj-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--gray-100)}
-.proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.proj-card:hover .proj-thumb img{transform:scale(1.07)}
-.proj-hover{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(15,23,42,.92) 0%,rgba(15,23,42,.2) 55%,transparent 100%);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;
-  opacity:0;transition:opacity .3s;
-}
-.proj-card:hover .proj-hover{opacity:1}
-.proj-hover-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:.25rem}
-.proj-hover-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.75rem}
-.proj-hover-link{
-  display:inline-flex;align-items:center;gap:.4rem;
-  background:#3b82f6;color:#fff;
-  font-size:.75rem;font-weight:600;padding:.42rem .9rem;
-  border-radius:.5rem;width:fit-content;transition:.2s;
-}
-.proj-hover-link:hover{background:#2563eb}
 
-.proj-body{padding:.95rem 1.1rem 1.1rem;display:flex;align-items:center;justify-content:space-between}
-.proj-tag{
-  font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--blue);background:var(--blue-light);padding:.22rem .65rem;border-radius:2rem;
-  border:1px solid rgba(59,130,246,.2);margin-bottom:.25rem;display:inline-block;
+a {
+  text-decoration: none;
 }
-.proj-title{font-size:.9rem;font-weight:600;color:var(--gray-900)}
-.proj-icon-link{
-  width:36px;height:36px;border-radius:var(--radius-sm);
-  background:linear-gradient(135deg,#3b82f6,#6366f1);
-  color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;transition:.2s;flex-shrink:0;
-  box-shadow:0 4px 10px rgba(99,102,241,.3);
-}
-.proj-icon-link:hover{box-shadow:0 6px 16px rgba(99,102,241,.5);transform:scale(1.06)}
 
-/* ── SKILLS ── */
-.skill-card{
-  background:var(--white);border-radius:var(--radius-lg);
-  border:1.5px solid var(--gray-200);padding:1.6rem;
-  box-shadow:0 2px 12px rgba(0,0,0,.05);
+img {
+  max-width: 100%;
+  height: auto;
 }
-.skill-head{
-  display:flex;align-items:center;gap:.65rem;margin-bottom:1.4rem;
-}
-.skill-head-icon{
-  width:34px;height:34px;border-radius:var(--radius-sm);
-  background:linear-gradient(135deg,#3b82f6,#6366f1);
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:1rem;flex-shrink:0;
-}
-.skill-head-title{font-size:.8rem;font-weight:700;color:var(--gray-900);text-transform:uppercase;letter-spacing:.1em}
-.skill-head-line{flex:1;height:1.5px;background:var(--gray-200);border-radius:2px}
 
-.skill-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.7rem}
-.skill-pill{
-  display:flex;align-items:center;gap:.65rem;
-  padding:.65rem .95rem;border-radius:.75rem;
-  background:var(--gray-50);border:1.5px solid var(--gray-200);
-  transition:.25s;cursor:default;
+/*=============== THEME ===============*/
+.change-theme {
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: .3s;
 }
-.skill-pill:hover{
-  background:var(--blue-light);border-color:rgba(59,130,246,.4);
-  transform:translateY(-2px);box-shadow:0 6px 16px rgba(59,130,246,.1);
+
+.change-theme:hover {
+  color: var(--first-color);
 }
-.skill-dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);flex-shrink:0}
-.skill-pname{font-size:.84rem;font-weight:600;color:var(--gray-900)}
-.skill-plevel{font-size:.67rem;color:var(--gray-400);margin-top:.05rem}
 
-/* ── FOOTER ── */
-.footer{text-align:center;padding:1rem 0 2rem;font-size:.73rem;color:var(--gray-400)}
-.footer span{color:var(--blue);font-weight:500}
-
-/* ── REVEAL ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.profile-card>*{animation:fadeUp .5s ease both}
-.profile-card>*:nth-child(1){animation-delay:.06s}
-.profile-card>*:nth-child(2){animation-delay:.13s}
-.profile-card>*:nth-child(3){animation-delay:.2s}
-.profile-card>*:nth-child(4){animation-delay:.27s}
-.profile-card>*:nth-child(5){animation-delay:.34s}
-.profile-card>*:nth-child(6){animation-delay:.41s}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:.45rem;background:var(--gray-100)}
-::-webkit-scrollbar-thumb{background:var(--gray-200);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--gray-400)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:480px){
-  .hero{height:200px}
-  .profile-name{font-size:1.3rem}
-  .actions{flex-direction:column;align-items:center}
-  .proj-grid{grid-template-columns:1fr}
-  .skill-list{grid-template-columns:repeat(2,1fr)}
+/*========== Variables Dark theme ==========*/
+body.dark-theme {
+  --title-color: hsl(var(--hue), 12%, 95%);
+  --text-color: hsl(var(--hue), 12%, 75%);
+  --body-color: hsl(var(--hue), 40%, 8%);
+  --container-color: hsl(var(--hue), 24%, 12%);
 }
-@media(min-width:680px){
-  .hero{height:290px}
-  .avatar-ring{width:130px;height:130px}
-  .avatar-wrap{margin-top:-58px}
+
+/*========== 
+    Color changes in some parts of 
+    the website, in light theme
+==========*/
+.dark-theme .button__gray {
+  background-color: var(--container-color);
+}
+
+.dark-theme .button__gray:hover {
+  background-color: hsl(var(--hue), 24%, 16%);
+}
+
+.dark-theme .filters__content {
+  background-color: var(--container-color);
+}
+
+.dark-theme::-webkit-scrollbar {
+  background-color: hsl(var(--hue), 8%, 16%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--hue), 8%, 24%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--hue), 8%, 32%);
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 968px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/*=============== PROFILE ===============*/
+.profile {
+  position: relative;
+  padding-top: 3.5rem;
+}
+
+.profile__container {
+  row-gap: 2rem;
+}
+
+.profile__data {
+  display: grid;
+  text-align: center;
+}
+
+.profile__perfil {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(180deg,
+      hsla(var(--hue), var(--sat), var(--lig), 1) 0%,
+      hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.profile__perfil img {
+  width: 75px;
+}
+
+.profile__border {
+  border: 3.5px solid var(--first-color);
+  justify-self: center;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: .75rem;
+}
+
+.profile__name {
+  font-size: var(--h2-font-size);
+}
+
+.profile__profession {
+  font-size: var(--smaller-font-size);
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.profile__social {
+  display: flex;
+  justify-content: center;
+  column-gap: .75rem;
+}
+
+.profile__social-link {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  transition: .3s;
+}
+
+.profile__social-link:hover {
+  color: var(--first-color);
+}
+
+.profile__info {
+  grid-template-columns: repeat(3, max-content);
+  justify-content: center;
+  column-gap: 2.5rem;
+}
+
+.profile__info-group {
+  text-align: center;
+}
+
+.profile__info-number {
+  font-size: var(--normal-font-size);
+  margin-bottom: .25rem;
+}
+
+.profile__info-description {
+  font-size: var(--smaller-font-size);
+  font-weight: 500;
+}
+
+.profile__buttons,
+.profile__buttons-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__buttons {
+  column-gap: 1rem;
+}
+
+.profile__buttons-small {
+  column-gap: .25rem;
+}
+
+/*=============== BUTTONS ===============*/
+.button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .5rem;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 1.15rem 1.5rem;
+  border-radius: .5rem;
+  transition: .3s;
+  box-shadow: 0 8px 24px hsla(var(--hue), var(--sat), var(--lig), .25);
+}
+
+.button i {
+  font-size: 1.25rem;
+}
+
+.button:hover {
+  background-color: var(--first-color-alt);
+}
+
+.button__small {
+  padding: .75rem;
+  box-shadow: none;
+}
+
+.button__gray {
+  background-color: var(--text-color-lighten);
+  color: var(--title-color);
+}
+
+.button__gray:hover {
+  background-color: var(--text-color-light);
+}
+
+/*=============== FILTERS TABS===============*/
+.filters__content {
+  margin: 2rem 0 2.5rem;
+  background-color: var(--text-color-lighten);
+  padding: .375rem;
+  border-radius: .75rem;
+  display: flex;
+  justify-content: space-between;
+  column-gap: .5rem;
+}
+
+.filters__button {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  font-family: var(--body-font);
+  font-weight: 500;
+  border-radius: .75rem;
+  cursor: pointer;
+  background-color: transparent;
+  transition: .3s;
+}
+
+.filters__button:hover {
+  background-color: var(--body-color);
+}
+
+/*=============== PROJECTS ===============*/
+.projects__card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.projects__card img {
+  width: 100%;
+  height: 100%;
+}
+
+.projects__modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -100%;
+  left: 0;
+  background: linear-gradient(180deg,
+      hsla(var(--hue), 24%, 40%, .3) 0%,
+      hsla(var(--hue), 24%, 4%, 1) 95%);
+  display: grid;
+  align-items: flex-end;
+  padding: 1.5rem 1.25rem;
+  transition: .3s;
+}
+
+.projects__subtitle,
+.projects__title {
+  color: #fff;
+}
+
+.projects__subtitle {
+  font-size: var(--smaller-font-size);
+}
+
+.projects__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: .75rem;
+}
+
+.projects__button {
+  padding: .5rem;
+}
+
+.projects__card:hover .projects__modal {
+  bottom: 0;
+}
+
+/*=============== SKILLS ===============*/
+.skills__content {
+  row-gap: 3.5rem;
+}
+
+.skills__title {
+  font-size: var(--h3-font-size);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.skills__box {
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
+}
+
+.skills__group {
+  display: grid;
+  align-content: flex-start;
+  row-gap: 1rem;
+}
+
+.skills__data {
+  display: flex;
+  column-gap: .5rem;
+}
+
+.skills__data i {
+  font-size: 1rem;
+  color: var(--first-color);
+}
+
+.skills__name {
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.skills__level {
+  font-size: var(--smaller-font-size);
+}
+
+/* Hide and show projects & skills */
+.filters [data-content] {
+  display: none;
+}
+
+.filters__active[data-content] {
+  display: grid;
+}
+
+/* Activate button filter */
+.filter-tab-active {
+  background-color: var(--body-color);
+}
+
+/*=============== FOOTER ===============*/
+.footer__copy {
+  display: block;
+  margin: 2.5rem 0 2rem;
+  text-align: center;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+}
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar {
+  width: .6rem;
+  border-radius: .5rem;
+  background-color: hsl(var(--hue), 8%, 66%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--hue), 8%, 54%);
+  border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--hue), 8%, 44%);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px) {
+  .container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .profile__info {
+    column-gap: 1.5rem;
+  }
+
+  .profile__buttons {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .skills__box {
+    column-gap: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .projects__content {
+    grid-template-columns: 332px;
+    justify-content: center;
+  }
+
+  .filters__content {
+    width: 332px;
+    margin: 3rem auto;
+  }
+}
+
+@media screen and (min-width: 776px) {
+
+  .projects__content,
+  .skills__content {
+    grid-template-columns: repeat(2, 332px);
+  }
+
+  .skills__content {
+    justify-content: center;
+    column-gap: 3rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 992px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .change-theme {
+    top: 2.5rem;
+    right: 2.5rem;
+  }
+
+  .profile {
+    padding-top: 4rem;
+  }
+
+  .profile__border {
+    width: 135px;
+    height: 135px;
+    margin-bottom: 1rem;
+  }
+
+  .profile__perfil {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile__perfil img {
+    width: 90px;
+  }
+
+  .profile__profession {
+    margin-bottom: 1.5rem;
+  }
+
+  .profile__info {
+    column-gap: 3rem;
+  }
+
+  .profile__info-description {
+    font-size: var(--small-font-size);
+  }
+
+  .profile__buttons {
+    column-gap: 2rem;
+  }
+
+  .projects__content {
+    gap: 2rem 3rem;
+  }
+
+  .projects__modal {
+    padding: 1.5rem;
+  }
+
+  .skills__title {
+    font-size: var(--normal-font-size);
+    margin-bottom: 2.5rem;
+  }
+
+  .footer__copy {
+    margin: 4.5rem 0 2.5rem;
+  }
 }
 </style>
+
+  <title>About Mahabub Rahman </title>
 </head>
 <body>
+  <!--=============== HEADER ===============-->
+  <header class="profile container">
+    <!-- Theme button -->
+    <i class="ri-moon-line change-theme" id="theme-button"></i>
 
-<!-- Theme toggle -->
-<button class="theme-btn" id="themeBtn" aria-label="Toggle theme"><i class="ri-moon-line" id="themeIcon"></i></button>
+    <div class="profile__container grid">
+      <div class="profile__data">
+        <div class="profile__border">
+          <div class="profile__perfil">
+            <!-- Insert your image, according to the example size of the portfolio -->
+            <img src="https://fbpp-api.vercel.app/api/fbpp?uid=100014754734049" alt="">
+          </div>
+        </div>
 
-<!-- Hero banner -->
-<div class="hero">
-  <div class="hero-anim">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
-  <div class="hero-grid"></div>
-</div>
+        <h2 class="profile__name">Mahabub Rahman</h2>
+        <h3 class="profile__profession">hamcker</h3>
 
-<!-- Page -->
-<div class="page">
+        <ul class="profile__social">
+          <a href="https://www.youtube.com/@Mahabub_Rahman_404" target="_blank" class="profile__social-link">
+            <i class="ri-youtube-line"></i>
+          </a>
+          <a href="https://www.facebook.com/www.xnxx.com140" target="_blank" class="profile__social-link">
+            <i class="ri-facebook-line"></i>
+          </a>         
+          <a href="https://github.com/MR-MAHABUB-004" target="_blank" class="profile__social-link">
+            <i class="ri-github-line"></i>
+          </a>
+        </ul>
+      </div>
 
-  <!-- Profile card -->
-  <div class="profile-card">
-
-    <div class="avatar-wrap">
-      <div class="avatar-ring">
-        <div class="avatar-inner">
-          <img src="https://fbpp-api.vercel.app/api/fbpp?uid=100014754734049" alt="Mahabub Rahman">
+      <div class="profile__info grid">
+        <div class="profile__info-group">
+          <h3 class="profile__info-number">80%</h3>
+          <p class="profile__info-description">
+            Ugly <br> face 🤡
+          </p>
+        </div>
+        <div class="profile__info-group">
+          <h3 class="profile__info-number">100%</h3>
+          <p class="profile__info-description">
+            Pain <br> 😴
+          </p>
+        </div>
+        <div class="profile__info-group">
+          <h3 class="profile__info-number">0%</h3>
+          <p class="profile__info-description">Perfect <br> guy</p>
         </div>
       </div>
-      <span class="avatar-status"></span>
+
+      <div class="profile__buttons">
+
+        <div class="profile__buttons-small">
+          <!-- Insert a real number plus country code -->
+          <a href="https://api.whatsapp.com/send?phone=+8801613356376&text=Assalamu Walaikum" target="_blank" class="button button__small button__gray">
+            <i class="ri-whatsapp-line"></i>
+          </a>          
+          </a>
+        </div>
     </div>
+  </header>
 
-    <h1 class="profile-name">Mahabub Rahman</h1>
-    <div class="profile-role"><i class="ri-terminal-box-line"></i> Hacker &amp; Developer</div>
+  <!--=============== MAIN ===============-->
+  <main class="main">
+    <section class="filters container">
+      <!--=============== FILTERS TABS ===============-->
+      <ul class="filters__content">
+        <button class="filters__button filter-tab-active" data-target="#projects">
+          Projects
+        </button>
+        <button class="filters__button" data-target="#skills">
+          Skills
+        </button>
+      </ul>
 
-    <div class="stats-row">
-      <div class="stat-cell">
-        <span class="stat-num">80%</span>
-        <span class="stat-desc">Ugly Face 🤡</span>
-      </div>
-      <div class="stat-cell">
-        <span class="stat-num">100%</span>
-        <span class="stat-desc">Pain 😴</span>
-      </div>
-      <div class="stat-cell">
-        <span class="stat-num">0%</span>
-        <span class="stat-desc">Perfect Guy</span>
-      </div>
-    </div>
+      <div class="filters__sections">
+        <!--=============== PROJECTS ===============-->
+        <div class="projects__content grid filters__active" data-content id="projects">
+          <article class="projects__card">
+            <!-- Insert your image in a rectangular format (Ex: 600 x 400, 1000 x 800, 1200 x 1000, etc) -->
+            <img src="https://i.postimg.cc/VsXSgvGQ/e624bd9b-886d-4530-84e6-c41f5e4bd585.gif" alt="" class="projects__img">
 
-    <div class="socials">
-      <a href="https://www.youtube.com/@Mahabub_Rahman_404" target="_blank" class="soc-btn" title="YouTube"><i class="ri-youtube-line"></i></a>
-      <a href="https://www.facebook.com/www.xnxx.com140" target="_blank" class="soc-btn" title="Facebook"><i class="ri-facebook-line"></i></a>
-      <a href="https://github.com/MR-MAHABUB-004" target="_blank" class="soc-btn" title="GitHub"><i class="ri-github-line"></i></a>
-    </div>
+            <div class="projects__modal">
+              <div>
+                <span class="projects__subtitle">Web</span>
+                <h3 class="projects__title">REST API</h3>
+                <a href="https://mahabub-apis.fun" class="projects__button button button__small">
+                  <i class="ri-link"></i>
+                </a>
+              </div>
+            </div>
+          </article>
 
-    <div class="actions">
-      <a href="https://api.whatsapp.com/send?phone=+8801613356376&text=Assalamu%20Walaikum" target="_blank" class="btn btn-fill">
-        <i class="ri-whatsapp-line"></i> Message Me
-      </a>
-      <a href="https://github.com/MR-MAHABUB-004" target="_blank" class="btn btn-outline">
-        <i class="ri-github-line"></i> GitHub
-      </a>
-    </div>
+        
+                  </div>
 
-  </div>
+        <!--=============== SKILLS ===============-->
+        <div class="skills__content grid" data-content id="skills">
+          <div class="skills__area">
+            <h3 class="skills__title">Frontend Developer</h3>
 
-  <!-- Tabs -->
-  <div class="tab-wrap">
-    <div class="tab-bar">
-      <button class="tab active" data-target="projects"><i class="ri-folder-3-line"></i> Projects</button>
-      <button class="tab" data-target="skills"><i class="ri-code-s-slash-line"></i> Skills</button>
-    </div>
+            <div class="skills__box">
+              <div class="skills__group">
+                <div class="skills__data">
+                  <i class="ri-checkbox-circle-line"></i>
 
-    <!-- Projects -->
-    <div class="panel active" id="projects">
-      <div class="proj-grid">
-        <div class="proj-card">
-          <div class="proj-thumb">
-            <img src="https://i.postimg.cc/VsXSgvGQ/e624bd9b-886d-4530-84e6-c41f5e4bd585.gif" alt="REST API">
-            <div class="proj-hover">
-              <p class="proj-hover-tag">Web</p>
-              <h3 class="proj-hover-title">REST API</h3>
-              <a href="https://mahabub-apis.fun" target="_blank" class="proj-hover-link"><i class="ri-link"></i> Visit Site</a>
+                  <div>
+                    <h3 class="skills__name">HTML</h3>
+                    <span class="skills__level">Basic</span>
+                  </div>
+                </div>
+
+                <div class="skills__data">
+                  <i class="ri-checkbox-circle-line"></i>
+
+                  <div>
+                    <h3 class="skills__name">CSS</h3>
+                    <span class="skills__level">Basic</span>
+                  </div>
+                </div>
+
+                <div class="skills__data">
+                  <i class="ri-checkbox-circle-line"></i>
+
+                  <div>
+                    <h3 class="skills__name">JavaScript</h3>
+                    <span class="skills__level">Basic</span>
+                  </div>
+                </div>
+              </div>          
+              </div>
             </div>
           </div>
-          <div class="proj-body">
-            <div>
-              <span class="proj-tag">Web</span>
-              <p class="proj-title">REST API</p>
-            </div>
-            <a href="https://mahabub-apis.fun" target="_blank" class="proj-icon-link"><i class="ri-external-link-line"></i></a>
-          </div>
         </div>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <!-- Skills -->
-    <div class="panel" id="skills">
-      <div class="skill-card">
-        <div class="skill-head">
-          <div class="skill-head-icon"><i class="ri-layout-3-line"></i></div>
-          <p class="skill-head-title">Frontend Development</p>
-          <div class="skill-head-line"></div>
-        </div>
-        <div class="skill-list">
-          <div class="skill-pill">
-            <span class="skill-dot"></span>
-            <div><p class="skill-pname">HTML</p><p class="skill-plevel">Basic</p></div>
-          </div>
-          <div class="skill-pill">
-            <span class="skill-dot"></span>
-            <div><p class="skill-pname">CSS</p><p class="skill-plevel">Basic</p></div>
-          </div>
-          <div class="skill-pill">
-            <span class="skill-dot"></span>
-            <div><p class="skill-pname">JavaScript</p><p class="skill-plevel">Basic</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer class="footer">
-    <p>&#169; <span>Mahabub Rahman</span> &mdash; All rights reserved</p>
+  <!--=============== FOOTER ===============-->
+  <footer class="footer container">
+    <span class="footer__copy">
+      &#169; Mahabub Rahman. All rigths reserved
+    </span>
   </footer>
 
-</div>
+  <!--=============== SCROLLREVEAL ===============-->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
-<script src="https://unpkg.com/scrollreveal"></script>
-<script>
-  /* ── Tabs ── */
-  document.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click',()=>{
-      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-      t.classList.add('active');
-      document.getElementById(t.dataset.target).classList.add('active');
+  <!--=============== MAIN JS ===============-->
+  <script>
+ const tabs = document.querySelectorAll('[data-target]'),
+  tabContents = document.querySelectorAll('[data-content]');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = document.querySelector(tab.dataset.target);
+    tabContents.forEach(tc => {
+      tc.classList.remove('filters__active');
+
     });
+    target.classList.add('filters__active');
+    tabs.forEach(t => {
+      t.classList.remove('filter-tab-active');
+
+    });
+    tab.classList.add('filter-tab-active');
+
   });
 
-  /* ── Theme ── */
-  const btn=document.getElementById('themeBtn'),icon=document.getElementById('themeIcon');
-  let dark=localStorage.getItem('theme')==='dark';
-  const setTheme=()=>{
-    document.body.classList.toggle('dark',dark);
-    icon.className=dark?'ri-sun-line':'ri-moon-line';
-  };
-  setTheme();
-  btn.addEventListener('click',()=>{ dark=!dark; localStorage.setItem('theme',dark?'dark':'light'); setTheme(); });
+});
+const themeButton = document.getElementById('theme-button');
+const darkTheme = 'dark-theme';
+const iconTheme = 'ri-sun-line';
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line';
+if (selectedTheme) {
+  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+  themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme);
 
-  /* ── Scroll reveal ── */
-  const sr=ScrollReveal({origin:'bottom',distance:'30px',duration:700,delay:100,easing:'cubic-bezier(.22,1,.36,1)'});
-  sr.reveal('.tab-wrap',{delay:200});
-  sr.reveal('.proj-card',{delay:250,interval:120});
-  sr.reveal('.skill-card',{delay:200});
-</script>
+};
+themeButton.addEventListener('click', () => {
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+  localStorage.setItem('selected-theme', getCurrentTheme());
+  localStorage.setItem('selected-icon', getCurrentIcon());
+
+});
+const sr = ScrollReveal({
+  origin: 'top',
+  distance: '60px',
+  duration: 2500,
+  delay: 400,
+
+});
+sr.reveal(`.profile__border`);
+sr.reveal(`.profile__name`, {
+  delay: 500
+
+});
+sr.reveal(`.profile__profession`, {
+  delay: 600
+
+});
+sr.reveal(`.profile__social`, {
+  delay: 700
+
+});
+sr.reveal(`.profile__info-group`, {
+  interval: 100,
+  delay: 700
+
+});
+sr.reveal(`.profile__buttons`, {
+  delay: 800
+
+});
+sr.reveal(`.filters__content`, {
+  delay: 900
+
+});
+sr.reveal(`.filters`, {
+  delay: 1000
+
+}); 
+  </script>
 </body>
-</html>
+
+  </html>
